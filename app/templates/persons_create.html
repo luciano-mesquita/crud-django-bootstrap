@@ -1,19 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="POST">
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block 'title' %} New Person {% endblock %}
+
+{% block 'menu' %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+        <a class="navbar-brand" href="#">Django CRUD</a>
         
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'persons_list' %}">Persons<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Orders</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block 'content' %}
+    <br>
+    <form method="POST">
         {% csrf_token %}
+        {{ form|bootstrap }}
 
-        {{ form }}
-
-        <button type="submit">Save</button>
-
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">Save</button>
+            <a href="{% url 'persons_list' %}" class="btn btn-danger">Cancel</a>
+        </div>
     </form>
-</body>
-</html>
+    <br>
+{% endblock %}
