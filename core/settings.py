@@ -91,3 +91,7 @@ LOGIN_REDIRECT_URL = 'persons_list'
 LOGOUT_URL = '/logout/'
 
 LOGOUT_REDIRECT_URL = 'home'
+
+STATICFILES_DIRS = [
+    'statics',
+]
